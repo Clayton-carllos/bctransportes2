@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="carrossel.css">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    body{
+      margin: 0%;
+      padding: 0%;
+    }
+    .mySlides {display:none;}
+    .carros {
+      position: relative;
+    }
+    .carros a{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      background-color: orange;
+      border-radius: 100px;
+      text-align: center;
+      color: white;
+      width: 180px;
+      padding: 10px;
+      text-decoration: none;
+    }
+    .display-left{
+      position: absolute;
+      top:50%;
+      left: 5%;
+      font-size:500%;
+      color: white;
+      border: none;
+      background-color: transparent;
+    }
+    .display-right{
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      font-size:500%;
+      color: white;
+      border: none;
+      background-color: transparent;
+    }     
+  </style>
+  <div class="carros" style="max-width:100%">
+    <img class="mySlides" src="../img/banner1.jpg" style="width:100%">
+    <img class="mySlides" src="../img/imagem2.jpg" style="width:100%">
+    <img class="mySlides" src="../img/imagem3.jpg" style="width:100%">
+    <a href="#" class="button-orçamento">ORÇAMENTO</a>
+
+    <button class="display-left" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="display-right" onclick="plusDivs(+1)">&#10095;</button>
+  </div>
+  
+  <script>
+    var myIndex = 0;
+    carousel();
+      
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 4000); // Change image every 4 seconds
+    }
+    
+    var slideIndex = 1;
+    showDivs(slideIndex);
+    
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+    
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length} ;
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      x[slideIndex-1].style.display = "block";
+    }
+  </script>
+        
+</body>
+</html>
